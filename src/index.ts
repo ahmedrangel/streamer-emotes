@@ -42,30 +42,30 @@ const getStreamerEmotes = async (channelLogin: string, options: {
 
   if (bttv) {
     const globals = typeof bttv === "boolean" ? true : bttv?.globals;
-    bttvPromise = getBttvEmotes(channelLogin, { globals });
+    bttvPromise = getBttvEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (ffz) {
     const globals = typeof ffz === "boolean" ? true : ffz?.globals;
-    ffzPromise = getFfzEmotes(channelLogin, { globals });
+    ffzPromise = getFfzEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (sevenTV) {
     const globals = typeof sevenTV === "boolean" ? true : sevenTV?.globals;
-    sevenTvPromise = get7tvEmotes(channelLogin, { globals });
+    sevenTvPromise = get7tvEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (twitch) {
     const globals = typeof twitch === "boolean" ? true : twitch?.globals;
-    twitchPromise = getTwitchEmotes(channelLogin, { globals });
+    twitchPromise = getTwitchEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   const [bttvEmotes, ffzEmotes, sevenTvEmotes, twitchEmotes] = await Promise.all([bttvPromise, ffzPromise, sevenTvPromise, twitchPromise]);
 
-  if (bttv) data.bttv = bttvEmotes;
-  if (ffz) data.ffz = ffzEmotes;
-  if (sevenTV) data.sevenTV = sevenTvEmotes;
-  if (twitch) data.twitch = twitchEmotes;
+  if (bttv && bttvEmotes) data.bttv = bttvEmotes;
+  if (ffz && ffzEmotes) data.ffz = ffzEmotes;
+  if (sevenTV && sevenTvEmotes) data.sevenTV = sevenTvEmotes;
+  if (twitch && twitchEmotes) data.twitch = twitchEmotes;
 
   return data;
 };
