@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- **twitch:** Get follower emotes ([279f3a7](https://github.com/ahmedrangel/streamer-emotes/commit/279f3a7))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.0.2
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.1...v0.0.2)
