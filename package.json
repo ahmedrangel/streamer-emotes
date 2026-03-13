@@ -1,27 +1,27 @@
 {
 	"name": "streamer-emotes",
 	"type": "module",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "A library to get Twitch, BTTV, FFZ and 7TV emotes for a given Twitch channel.",
 	"keywords": [
-    "streamer",
+		"streamer",
 		"emotes",
 		"twitch",
 		"bttv",
 		"ffz",
 		"7tv"
-  ],
+	],
 	"license": "MIT",
 	"repository": {
-    "type": "git",
-    "url": "git+https://github.com/ahmedrangel/streamer-emotes.git"
-  },
+		"type": "git",
+		"url": "git+https://github.com/ahmedrangel/streamer-emotes.git"
+	},
 	"homepage": "https://github.com/ahmedrangel/streamer-emotes",
 	"author": {
-    "name": "Ahmed Rangel",
-    "email": "ahmedrangel@outlook.com",
-    "url": "https://ahmedrangel.com"
-  },
+		"name": "Ahmed Rangel",
+		"email": "ahmedrangel@outlook.com",
+		"url": "https://ahmedrangel.com"
+	},
 	"scripts": {
 		"build": "obuild",
 		"dev": "node playground/index.ts",
@@ -29,12 +29,12 @@
 		"test:types": "tsc --noEmit"
 	},
 	"main": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    }
-  },
+	"exports": {
+		".": {
+			"types": "./dist/index.d.mts",
+			"default": "./dist/index.mjs"
+		}
+	},
 	"files": [
 		"dist"
 	],
