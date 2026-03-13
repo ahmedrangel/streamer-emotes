@@ -1,7 +1,7 @@
 import { $fetch } from "ofetch";
 import { type GqlPayloadOptions, gqlQuery } from "gql-payload";
 import type { StreamerEmotesProps, StreamerEmotesProviderResponse } from "../types";
-import { providersURL } from "../utils/helpers";
+import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
 
 /**
  *
@@ -12,6 +12,8 @@ import { providersURL } from "../utils/helpers";
 export const getTwitchEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse> => {
   channelLogin = channelLogin.toLowerCase();
   const { globals = true } = options ?? {};
+
+  const channelId = await getTwitchIdByLogin(channelLogin);
 
   const emotesFields = ["id", "token", "assetType"];
 
@@ -35,11 +37,22 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
     ]
   };
 
+  const localEmotesQuery: GqlPayloadOptions = {
+    operation: "channel",
+    variables: {
+      id: { value: channelId, type: "ID!" }
+    },
+    fields: [
+      { localEmoteSets: [{ emotes: emotesFields }] }
+    ]
+  }
+
   const toQuery: GqlPayloadOptions[] = [];
 
   if (globals) toQuery.push(globalQuery);
 
   toQuery.push(channelQuery);
+  toQuery.push(localEmotesQuery);
 
   const { data } = await $fetch<TwitchGqlResponse>(providersURL.twitch, {
     method: "POST",
@@ -49,6 +62,8 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
     },
     body: gqlQuery(toQuery)
   });
+
+  console.log(data.channel.localEmoteSets[0]?.emotes);
 
   const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps[] => {
     if (!data?.length) return [];
@@ -76,7 +91,10 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   };
 
   return {
-    channel: normalizeData(data?.subscriptionProduct?.emotes),
+    channel: [
+      ...normalizeData(data?.channel.localEmoteSets?.[0]?.emotes),
+      ...normalizeData(data?.subscriptionProduct?.emotes)
+    ],
     ...globals && { global: normalizeData(data?.emoteSet?.emotes) }
   };
 };
@@ -94,6 +112,11 @@ interface TwitchGqlResponse {
     };
     emoteSet: {
       emotes: TwitchGqlResponseEmotes[];
+    };
+    channel: {
+      localEmoteSets: {
+        emotes: TwitchGqlResponseEmotes[];
+      }[];
     };
   };
 }

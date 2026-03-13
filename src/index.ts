@@ -36,7 +36,7 @@ const getStreamerEmotes = async (channelLogin: string, options: {
 
   let bttvPromise, ffzPromise, sevenTvPromise, twitchPromise;
 
-  if (bttv || ffz || sevenTV) {
+  if (bttv || ffz || sevenTV || twitch) {
     await getTwitchIdByLogin(channelLogin);
   }
 
