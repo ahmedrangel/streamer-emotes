@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.1...v0.0.2)
+
+### 🩹 Fixes
+
+- Handle provider fetch failures ([1766789](https://github.com/ahmedrangel/streamer-emotes/commit/1766789))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.0.1
 
 
