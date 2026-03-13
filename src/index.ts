@@ -2,7 +2,7 @@ import { get7tvEmotes } from "./providers/7tv";
 import { getBttvEmotes } from "./providers/bttv";
 import { getFfzEmotes } from "./providers/ffz";
 import { getTwitchEmotes } from "./providers/twitch";
-import type { StreamEmotesProviderResponse } from "./types";
+import type { StreamerEmotesProviderResponse } from "./types";
 import { getTwitchIdByLogin } from "./utils/helpers";
 
 /**
@@ -28,10 +28,10 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   const { bttv, ffz, sevenTV, twitch } = options;
 
   const data: {
-    bttv?: StreamEmotesProviderResponse;
-    ffz?: StreamEmotesProviderResponse;
-    sevenTV?: StreamEmotesProviderResponse;
-    twitch?: StreamEmotesProviderResponse;
+    bttv?: StreamerEmotesProviderResponse;
+    ffz?: StreamerEmotesProviderResponse;
+    sevenTV?: StreamerEmotesProviderResponse;
+    twitch?: StreamerEmotesProviderResponse;
   } = {};
 
   let bttvPromise, ffzPromise, sevenTvPromise, twitchPromise;

@@ -1,4 +1,4 @@
-export interface StreamEmotesProps {
+export interface StreamerEmotesProps {
   animated: boolean;
   id: string;
   images: {
@@ -9,7 +9,7 @@ export interface StreamEmotesProps {
   provider: "7tv" | "bttv" | "ffz" | "twitch";
 }
 
-export interface StreamEmotesProviderResponse {
-  channel: StreamEmotesProps[];
-  global?: StreamEmotesProps[];
+export interface StreamerEmotesProviderResponse {
+  channel: StreamerEmotesProps[];
+  global?: StreamerEmotesProps[];
 }

@@ -1,5 +1,5 @@
 import { $fetch } from "ofetch";
-import type { StreamEmotesProps, StreamEmotesProviderResponse } from "../types";
+import type { StreamerEmotesProps, StreamerEmotesProviderResponse } from "../types";
 import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
 
 /**
@@ -8,7 +8,7 @@ import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
  * @param {boolean} options.globals Include global Twitch emotes in the response. Defaults to `true`.
  * @returns
  */
-export const getBttvEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamEmotesProviderResponse> => {
+export const getBttvEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse> => {
   channelLogin = channelLogin.toLowerCase();
   const { globals = true } = options ?? {};
 
@@ -36,7 +36,7 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   channel.push(...channelData.channelEmotes, ...channelData.sharedEmotes);
   if (globalData) global.push(...globalData);
 
-  const normalizeData = (data: BttvEmotesResponse[]): StreamEmotesProps[] => {
+  const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps[] => {
     if (!data?.length) return [];
 
     return data.map(emote => ({
