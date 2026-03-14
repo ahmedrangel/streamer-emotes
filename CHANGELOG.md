@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.3...v0.0.4)
+
+### 🩹 Fixes
+
+- Remove log ([758aafa](https://github.com/ahmedrangel/streamer-emotes/commit/758aafa))
+- Update Twitch emote cdn to v2 ([38b8b4c](https://github.com/ahmedrangel/streamer-emotes/commit/38b8b4c))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.0.3
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.2...v0.0.3)
