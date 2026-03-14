@@ -20,7 +20,7 @@ export const getFfzEmotes = async (channelLogin: string, options?: { globals?: b
   const channelDataPromise = $fetch<FfzRoomResponse>(`/room/id/${channelId}`, {
     baseURL: providersURL.ffz,
     method: "GET"
-  });
+  }).catch(() => null);
 
   let globalDataPromise;
 
@@ -33,7 +33,7 @@ export const getFfzEmotes = async (channelLogin: string, options?: { globals?: b
 
   const [channelData, globalData] = await Promise.all([channelDataPromise, globalDataPromise]);
 
-  channel.push(...channelData.sets[channelData.room.set].emoticons);
+  if (channelData) channel.push(...channelData.sets[channelData.room.set].emoticons);
   if (globalData) global.push(...globalData.default_sets.flatMap(setId => globalData.sets[setId].emoticons));
 
   const normalizeData = (data: FfzEmotesResponse[]): StreamerEmotesProps[] => {

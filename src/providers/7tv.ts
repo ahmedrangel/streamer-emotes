@@ -20,7 +20,7 @@ export const get7tvEmotes = async (channelLogin: string, options?: { globals?: b
   const channelDataPromise = $fetch<{ emote_set: { emotes: SevenTvEmotesResponse[] } }>(`/users/twitch/${channelId}`, {
     baseURL: providersURL.sevenTV,
     method: "GET"
-  });
+  }).catch(() => null);
 
   let globalDataPromise;
 
@@ -33,7 +33,7 @@ export const get7tvEmotes = async (channelLogin: string, options?: { globals?: b
 
   const [channelData, globalData] = await Promise.all([channelDataPromise, globalDataPromise]);
 
-  channel.push(...channelData.emote_set.emotes);
+  if (channelData) channel.push(...channelData.emote_set.emotes);
   if (globalData) global.push(...globalData.emotes);
 
   const normalizeData = (data: SevenTvEmotesResponse[]): StreamerEmotesProps[] => {

@@ -20,7 +20,7 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   const channelDataPromise = $fetch<FfzChannelResponse>(`/cached/users/twitch/${channelId}`, {
     baseURL: providersURL.bttv,
     method: "GET"
-  });
+  }).catch(() => null);
 
   let globalDataPromise;
 
@@ -33,7 +33,7 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
 
   const [channelData, globalData] = await Promise.all([channelDataPromise, globalDataPromise]);
 
-  channel.push(...channelData.channelEmotes, ...channelData.sharedEmotes);
+  if (channelData) channel.push(...channelData.channelEmotes, ...channelData.sharedEmotes);
   if (globalData) global.push(...globalData);
 
   const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps[] => {
