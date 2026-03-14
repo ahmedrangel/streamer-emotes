@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.1.0
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.5...v0.1.0)
+
+### 🚀 Enhancements
+
+- Add zeroWidth flag for 7tv emotes ([3acc442](https://github.com/ahmedrangel/streamer-emotes/commit/3acc442))
+
+### 🏡 Chore
+
+- Update examples ([3eeac59](https://github.com/ahmedrangel/streamer-emotes/commit/3eeac59))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.0.5
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.4...v0.0.5)
