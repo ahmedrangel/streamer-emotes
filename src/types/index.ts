@@ -7,6 +7,7 @@ export interface StreamerEmotesProps {
   }[];
   name: string;
   provider: "7tv" | "bttv" | "ffz" | "twitch";
+  zeroWidth?: boolean;
 }
 
 export interface StreamerEmotesProviderResponse {

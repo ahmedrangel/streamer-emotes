@@ -49,7 +49,8 @@ export const get7tvEmotes = async (channelLogin: string, options?: { globals?: b
         id: emote.id,
         images,
         name: emote.name,
-        provider: "7tv"
+        provider: "7tv",
+        zeroWidth: emote.flags === 1 && emote.data.flags === 256
       };
     });
 
@@ -64,8 +65,10 @@ export const get7tvEmotes = async (channelLogin: string, options?: { globals?: b
 interface SevenTvEmotesResponse {
   id: string;
   name: string;
+  flags: number;
   data: {
     animated: boolean;
+    flags: number;
     host: {
       url: string;
       files: {
