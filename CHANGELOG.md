@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.4...v0.0.5)
+
+### 🩹 Fixes
+
+- Default provider globals to true ([ec3cfb1](https://github.com/ahmedrangel/streamer-emotes/commit/ec3cfb1))
+- **twitch:** Conflict variables on gql ([7a3c39a](https://github.com/ahmedrangel/streamer-emotes/commit/7a3c39a))
+- Handle channels without channel emotes, then, continue to get globals ([5ea0520](https://github.com/ahmedrangel/streamer-emotes/commit/5ea0520))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.0.4
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.3...v0.0.4)
