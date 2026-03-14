@@ -1,7 +1,7 @@
 {
 	"name": "streamer-emotes",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A library to get Twitch, BTTV, FFZ and 7TV emotes for a given Twitch channel.",
 	"keywords": [
 		"streamer",

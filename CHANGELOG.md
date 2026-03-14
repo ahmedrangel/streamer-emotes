@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.1.1
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.0...v0.1.1)
+
+### 💅 Refactors
+
+- Improve emote types generic by provider ([982feb4](https://github.com/ahmedrangel/streamer-emotes/commit/982feb4))
+
+### 📖 Documentation
+
+- Add npm badges to README ([f026d77](https://github.com/ahmedrangel/streamer-emotes/commit/f026d77))
+- Add output example to README ([300419a](https://github.com/ahmedrangel/streamer-emotes/commit/300419a))
+
+### 🏡 Chore
+
+- Lint ([5982a47](https://github.com/ahmedrangel/streamer-emotes/commit/5982a47))
+- Call get twitch id before promise all providers ([376cf63](https://github.com/ahmedrangel/streamer-emotes/commit/376cf63))
+
+### 🤖 CI
+
+- Add workflows ([0b75b62](https://github.com/ahmedrangel/streamer-emotes/commit/0b75b62))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.1.0
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.0.5...v0.1.0)
