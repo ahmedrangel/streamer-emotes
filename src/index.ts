@@ -41,22 +41,22 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   }
 
   if (bttv) {
-    const globals = typeof bttv === "boolean" ? true : bttv?.globals;
+    const globals = typeof bttv === "boolean" ? true : bttv?.globals ?? true;
     bttvPromise = getBttvEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (ffz) {
-    const globals = typeof ffz === "boolean" ? true : ffz?.globals;
+    const globals = typeof ffz === "boolean" ? true : ffz?.globals ?? true;
     ffzPromise = getFfzEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (sevenTV) {
-    const globals = typeof sevenTV === "boolean" ? true : sevenTV?.globals;
+    const globals = typeof sevenTV === "boolean" ? true : sevenTV?.globals ?? true;
     sevenTvPromise = get7tvEmotes(channelLogin, { globals }).catch(() => null);
   }
 
   if (twitch) {
-    const globals = typeof twitch === "boolean" ? true : twitch?.globals;
+    const globals = typeof twitch === "boolean" ? true : twitch?.globals ?? true;
     twitchPromise = getTwitchEmotes(channelLogin, { globals }).catch(() => null);
   }
 
