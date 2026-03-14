@@ -9,7 +9,7 @@ import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
  * @param {boolean} options.globals Include global Twitch emotes in the response. Defaults to `true`.
  * @returns
  */
-export const getTwitchEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse> => {
+export const getTwitchEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse<"twitch">> => {
   channelLogin = channelLogin.toLowerCase();
   const { globals = true } = options ?? {};
 
@@ -63,7 +63,7 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
     body: gqlQuery(toQuery)
   });
 
-  const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps[] => {
+  const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps<"twitch">[] => {
     if (!data?.length) return [];
 
     return data.map(emote => ({

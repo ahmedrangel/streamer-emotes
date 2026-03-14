@@ -8,7 +8,7 @@ import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
  * @param {boolean} options.globals Include global Twitch emotes in the response. Defaults to `true`.
  * @returns
  */
-export const getFfzEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse> => {
+export const getFfzEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse<"ffz">> => {
   channelLogin = channelLogin.toLowerCase();
   const { globals = true } = options ?? {};
 
@@ -36,7 +36,7 @@ export const getFfzEmotes = async (channelLogin: string, options?: { globals?: b
   if (channelData) channel.push(...channelData.sets[channelData.room.set].emoticons);
   if (globalData) global.push(...globalData.default_sets.flatMap(setId => globalData.sets[setId].emoticons));
 
-  const normalizeData = (data: FfzEmotesResponse[]): StreamerEmotesProps[] => {
+  const normalizeData = (data: FfzEmotesResponse[]): StreamerEmotesProps<"ffz">[] => {
     if (!data?.length) return [];
 
     return data.map((emote) => {

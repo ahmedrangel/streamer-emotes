@@ -28,10 +28,10 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   const { bttv, ffz, sevenTV, twitch } = options;
 
   const data: {
-    bttv?: StreamerEmotesProviderResponse;
-    ffz?: StreamerEmotesProviderResponse;
-    sevenTV?: StreamerEmotesProviderResponse;
-    twitch?: StreamerEmotesProviderResponse;
+    bttv?: StreamerEmotesProviderResponse<"bttv">;
+    ffz?: StreamerEmotesProviderResponse<"ffz">;
+    sevenTV?: StreamerEmotesProviderResponse<"7tv">;
+    twitch?: StreamerEmotesProviderResponse<"twitch">;
   } = {};
 
   let bttvPromise, ffzPromise, sevenTvPromise, twitchPromise;

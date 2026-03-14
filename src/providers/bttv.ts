@@ -8,7 +8,7 @@ import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
  * @param {boolean} options.globals Include global Twitch emotes in the response. Defaults to `true`.
  * @returns
  */
-export const getBttvEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse> => {
+export const getBttvEmotes = async (channelLogin: string, options?: { globals?: boolean }): Promise<StreamerEmotesProviderResponse<"bttv">> => {
   channelLogin = channelLogin.toLowerCase();
   const { globals = true } = options ?? {};
 
@@ -36,7 +36,7 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   if (channelData) channel.push(...channelData.channelEmotes, ...channelData.sharedEmotes);
   if (globalData) global.push(...globalData);
 
-  const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps[] => {
+  const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps<"bttv">[] => {
     if (!data?.length) return [];
 
     return data.map(emote => ({
