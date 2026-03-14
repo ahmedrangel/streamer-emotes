@@ -1,4 +1,8 @@
 # streamer-emotes
+
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 A library to get Twitch, BTTV, FFZ and 7TV emotes for a given Twitch channel.
 
 ## Usage
@@ -15,3 +19,10 @@ const emotes = await getStreamerEmotes("rubius", {
 
 console.info(emotes);
 ```
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/streamer-emotes.svg?style=flat
+[npm-version-href]: https://npmjs.com/package/streamer-emotes
+
+[npm-downloads-src]: https://img.shields.io/npm/dm/streamer-emotes.svg?style=flat
+[npm-downloads-href]: https://npmjs.com/package/streamer-emotes
