@@ -7,7 +7,7 @@ import { getTwitchIdByLogin } from "./utils/helpers";
 
 /**
  *
- * @param channelLogin
+ * @param channelLogin Twitch channel login.
  * @param options.bttv Get emotes from BetterTTV if `true`. Defaults to `false`.
  * @param options.ffz Get emotes from FrankerFaceZ if `true`. Defaults to `false`.
  * @param options.sevenTV Get emotes from 7TV if `true`. Defaults to `false`.
@@ -36,10 +36,6 @@ const getStreamerEmotes = async (channelLogin: string, options: {
 
   let bttvPromise, ffzPromise, sevenTvPromise, twitchPromise;
 
-  if (bttv || ffz || sevenTV || twitch) {
-    await getTwitchIdByLogin(channelLogin);
-  }
-
   if (bttv) {
     const globals = typeof bttv === "boolean" ? true : bttv?.globals ?? true;
     bttvPromise = getBttvEmotes(channelLogin, { globals }).catch(() => null);
@@ -59,6 +55,8 @@ const getStreamerEmotes = async (channelLogin: string, options: {
     const globals = typeof twitch === "boolean" ? true : twitch?.globals ?? true;
     twitchPromise = getTwitchEmotes(channelLogin, { globals }).catch(() => null);
   }
+
+  await getTwitchIdByLogin(channelLogin);
 
   const [bttvEmotes, ffzEmotes, sevenTvEmotes, twitchEmotes] = await Promise.all([bttvPromise, ffzPromise, sevenTvPromise, twitchPromise]);
 
