@@ -8,6 +8,17 @@ export const providersURL = {
   twitch: "https://gql.twitch.tv/gql"
 };
 
+export const callTwitchGQL = async (...args: Parameters<typeof gqlQuery>) => {
+  return $fetch(providersURL.twitch, {
+    method: "POST",
+    headers: {
+      "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko",
+      "Content-Type": "application/json"
+    },
+    body: gqlQuery(...args)
+  });
+};
+
 let twitchIdMemory: Record<string, string> = {};
 
 export const getTwitchIdByLogin = async (login: string): Promise<string> => {
@@ -16,21 +27,14 @@ export const getTwitchIdByLogin = async (login: string): Promise<string> => {
     return twitchIdMemory[login];
   }
 
-  const { data } = await $fetch<{ data: { user: { id: string } } }>(providersURL.twitch, {
-    method: "POST",
-    headers: {
-      "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko",
-      "Content-Type": "application/json"
+  const { data } = await callTwitchGQL({
+    operation: "user",
+    variables: {
+      login: { value: login, type: "String!" }
     },
-    body: gqlQuery({
-      operation: "user",
-      variables: {
-        login: { value: login, type: "String!" }
-      },
-      fields: [
-        "id"
-      ]
-    })
+    fields: [
+      "id"
+    ]
   });
 
   const channelId = data?.user?.id;

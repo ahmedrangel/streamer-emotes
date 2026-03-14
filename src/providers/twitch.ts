@@ -1,7 +1,6 @@
-import { $fetch } from "ofetch";
-import { type GqlPayloadOptions, gqlQuery } from "gql-payload";
+import { type GqlPayloadOptions } from "gql-payload";
 import type { StreamerEmotesProps, StreamerEmotesProviderResponse } from "../types";
-import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
+import { callTwitchGQL, getTwitchIdByLogin } from "../utils/helpers";
 
 /**
  *
@@ -54,14 +53,7 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   toQuery.push(channelQuery);
   toQuery.push(localEmotesQuery);
 
-  const { data } = await $fetch<TwitchGqlResponse>(providersURL.twitch, {
-    method: "POST",
-    headers: {
-      "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko",
-      "Content-Type": "application/json"
-    },
-    body: gqlQuery(toQuery)
-  });
+  const { data } = await callTwitchGQL(toQuery);
 
   const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps<"twitch">[] => {
     if (!data?.length) return [];
