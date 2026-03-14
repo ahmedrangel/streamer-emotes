@@ -20,6 +20,43 @@ const emotes = await getStreamerEmotes("rubius", {
 console.info(emotes);
 ```
 
+## Output example
+```jsonc
+{
+  "<provider>": { // Provider prop
+    "channel": [ // Channel Emotes
+      {
+        "animated": true,
+        "id": "string",
+        "images": [
+          {
+            "url": "string",
+            "version": "string"
+          }
+        ],
+        "name": "string",
+        "provider": "string",
+        "zeroWidth": true // 7TV zero width emotes only
+      }
+    ],
+    "global": [ // Global Emotes
+      {
+        "animated": false,
+        "id": "string",
+        "images": [
+          {
+            "url": "string",
+            "version": "string"
+          }
+        ],
+        "name": "string",
+        "provider": "string",
+      }
+    ]
+  }
+}
+```
+
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/streamer-emotes.svg?style=flat
 [npm-version-href]: https://npmjs.com/package/streamer-emotes
