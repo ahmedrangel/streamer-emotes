@@ -40,7 +40,7 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   const localEmotesQuery: GqlPayloadOptions = {
     operation: "channel",
     variables: {
-      id: { value: channelId, type: "ID!" }
+      channelId: { name: "id", value: channelId, type: "ID!" }
     },
     fields: [
       { localEmoteSets: [{ emotes: emotesFields }] }
