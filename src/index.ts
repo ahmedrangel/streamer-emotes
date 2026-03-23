@@ -21,8 +21,8 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   sevenTV?: boolean | StreamerEmotesProviderOptions;
   twitch?: boolean | StreamerEmotesProviderOptions;
 }) => {
-  if (!Object.keys(options).length) {
-    throw new Error("At least one provider must be enabled");
+  if (!Object.keys(options).length || !Object.values(options).some(value => value)) {
+    throw new Error("At least one provider must be enabled.");
   }
 
   const { bttv, ffz, sevenTV, twitch } = options;
