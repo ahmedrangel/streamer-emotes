@@ -6,7 +6,7 @@ import type { StreamerEmotesProviderResponse } from "./types";
 import { getTwitchIdByLogin } from "./utils/helpers";
 
 /**
- *
+ * Get Twitch channel emotes from multiple providers.
  * @param channelLogin Twitch channel login.
  * @param options.bttv Get emotes from BetterTTV if `true`. Defaults to `false`.
  * @param options.ffz Get emotes from FrankerFaceZ if `true`. Defaults to `false`.
@@ -68,7 +68,7 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   return data;
 };
 
-export { getStreamerEmotes };
+export { getStreamerEmotes, getBttvEmotes, getFfzEmotes, get7tvEmotes, getTwitchEmotes };
 
 interface StreamerEmotesProviderOptions {
   globals: boolean;
