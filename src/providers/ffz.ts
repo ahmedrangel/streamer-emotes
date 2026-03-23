@@ -18,16 +18,14 @@ export const getFfzEmotes = async (channelLogin: string, options?: { globals?: b
   const global = [];
 
   const channelDataPromise = $fetch<FfzRoomResponse>(`/room/id/${channelId}`, {
-    baseURL: providersURL.ffz,
-    method: "GET"
+    baseURL: providersURL.ffz
   }).catch(() => null);
 
   let globalDataPromise;
 
   if (globals) {
     globalDataPromise = $fetch<FfzGlobalResponse>("/set/global", {
-      baseURL: providersURL.ffz,
-      method: "GET"
+      baseURL: providersURL.ffz
     });
   }
 

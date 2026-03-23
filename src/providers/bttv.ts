@@ -18,16 +18,14 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   const global = [];
 
   const channelDataPromise = $fetch<FfzChannelResponse>(`/cached/users/twitch/${channelId}`, {
-    baseURL: providersURL.bttv,
-    method: "GET"
+    baseURL: providersURL.bttv
   }).catch(() => null);
 
   let globalDataPromise;
 
   if (globals) {
     globalDataPromise = $fetch<BttvEmotesResponse[]>("/cached/emotes/global", {
-      baseURL: providersURL.bttv,
-      method: "GET"
+      baseURL: providersURL.bttv
     });
   }
 
