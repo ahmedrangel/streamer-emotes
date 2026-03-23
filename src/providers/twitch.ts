@@ -58,20 +58,22 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps<"twitch">[] => {
     if (!data?.length) return [];
 
+    const getTwitchEmoticonsURL = (id: string, version: string) => `https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/dark/${version}`;
+
     return data.map(emote => ({
       animated: emote.assetType === "ANIMATED",
       id: emote.id,
       images: [
         {
-          url: `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/default/dark/1.0`,
+          url: getTwitchEmoticonsURL(emote.id, "1.0"),
           version: "1.0"
         },
         {
-          url: `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/default/dark/2.0`,
+          url: getTwitchEmoticonsURL(emote.id, "2.0"),
           version: "2.0"
         },
         {
-          url: `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/default/dark/3.0`,
+          url: getTwitchEmoticonsURL(emote.id, "3.0"),
           version: "3.0"
         }
       ],

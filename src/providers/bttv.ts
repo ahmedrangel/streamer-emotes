@@ -37,20 +37,22 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps<"bttv">[] => {
     if (!data?.length) return [];
 
+    const getBTTVEmoticonsURL = (id: string, version: string) => `https://cdn.betterttv.net/emote/${id}/${version}`;
+
     return data.map(emote => ({
       animated: emote.animated,
       id: emote.id,
       images: [
         {
-          url: `https://cdn.betterttv.net/emote/${emote.id}/1x`,
+          url: getBTTVEmoticonsURL(emote.id, "1x"),
           version: "1x"
         },
         {
-          url: `https://cdn.betterttv.net/emote/${emote.id}/2x`,
+          url: getBTTVEmoticonsURL(emote.id, "2x"),
           version: "2x"
         },
         {
-          url: `https://cdn.betterttv.net/emote/${emote.id}/3x`,
+          url: getBTTVEmoticonsURL(emote.id, "3x"),
           version: "3x"
         }
       ],
