@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.1.2
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.1...v0.1.2)
+
+### 🚀 Enhancements
+
+- Export provider-specific emote getters ([1dfb98d](https://github.com/ahmedrangel/streamer-emotes/commit/1dfb98d))
+
+### 🩹 Fixes
+
+- Ensure at least one provider is enabled ([0d99cea](https://github.com/ahmedrangel/streamer-emotes/commit/0d99cea))
+
+### 💅 Refactors
+
+- Centralize twitch gql call into helper ([f8fbd5d](https://github.com/ahmedrangel/streamer-emotes/commit/f8fbd5d))
+
+### 🏡 Chore
+
+- Remove redundant GET method from provider requests ([1cc78a5](https://github.com/ahmedrangel/streamer-emotes/commit/1cc78a5))
+- **type:** Add generics to twitch gql helper ([802e932](https://github.com/ahmedrangel/streamer-emotes/commit/802e932))
+- Introduce helpers to build cdn emoticon urls for Twitch and BTTV ([5fc445e](https://github.com/ahmedrangel/streamer-emotes/commit/5fc445e))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.1.1
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.0...v0.1.1)
