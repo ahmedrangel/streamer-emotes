@@ -53,7 +53,7 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   toQuery.push(channelQuery);
   toQuery.push(localEmotesQuery);
 
-  const { data } = await callTwitchGQL(toQuery);
+  const { data } = await callTwitchGQL<TwitchGqlResponse>(toQuery);
 
   const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps<"twitch">[] => {
     if (!data?.length) return [];

@@ -8,8 +8,8 @@ export const providersURL = {
   twitch: "https://gql.twitch.tv/gql"
 };
 
-export const callTwitchGQL = async (...args: Parameters<typeof gqlQuery>) => {
-  return $fetch(providersURL.twitch, {
+export const callTwitchGQL = async <T>(...args: Parameters<typeof gqlQuery>): Promise<T> => {
+  return $fetch<T>(providersURL.twitch, {
     method: "POST",
     headers: {
       "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko",
@@ -27,7 +27,7 @@ export const getTwitchIdByLogin = async (login: string): Promise<string> => {
     return twitchIdMemory[login];
   }
 
-  const { data } = await callTwitchGQL({
+  const { data } = await callTwitchGQL<{ data: { user: { id: string } } }>({
     operation: "user",
     variables: {
       login: { value: login, type: "String!" }
