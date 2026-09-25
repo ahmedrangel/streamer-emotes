@@ -43,16 +43,14 @@
 		"ofetch": "^2.0.0-alpha.3"
 	},
 	"devDependencies": {
-		"@eslint/compat": "^2.0.3",
 		"@stylistic/eslint-plugin": "^5.10.0",
-		"@types/node": "^25.5.0",
-		"@typescript-eslint/eslint-plugin": "^8.57.0",
-		"@typescript-eslint/parser": "^8.57.0",
+		"@types/node": "^26.6.2",
 		"changelogen": "^0.6.2",
 		"eslint": "^10.0.3",
 		"eslint-plugin-import-x": "^4.16.2",
 		"obuild": "^0.4.32",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.70.1"
 	},
 	"packageManager": "pnpm@10.32.1"
 }

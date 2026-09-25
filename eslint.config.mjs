@@ -1,9 +1,7 @@
 import { resolve } from "node:path";
-import { defineConfig } from "eslint/config";
-import { includeIgnoreFile } from "@eslint/compat";
-import parserTs from "@typescript-eslint/parser";
+import { defineConfig, includeIgnoreFile } from "eslint/config";
+import tslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
 import importPlugin from "eslint-plugin-import-x";
 
 export default defineConfig([
@@ -12,12 +10,11 @@ export default defineConfig([
     files: ["**/*.js", "**/*.mjs", "**/*.ts"],
     plugins: {
       "@stylistic": stylisticPlugin,
-      // @ts-expect-error typescript plugin
-      "@typescript-eslint": tsPlugin,
+      "@typescript-eslint": tslint.plugin,
       "import": importPlugin
     },
     languageOptions: {
-      parser: parserTs
+      parser: tslint.parser
     },
     rules: {
       "camelcase": "off",
