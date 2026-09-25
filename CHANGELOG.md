@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.1.3
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.2...v0.1.3)
+
+### 🏡 Chore
+
+- **eslint:** Migrate to typescript-eslint ([efd92ff](https://github.com/ahmedrangel/streamer-emotes/commit/efd92ff))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.1.2
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.1...v0.1.2)
