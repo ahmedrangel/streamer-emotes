@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.1.4
+
+[compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.3...v0.1.4)
+
+### 🚀 Enhancements
+
+- **twitch:** Export emote image URL helper ([8db6d43](https://github.com/ahmedrangel/streamer-emotes/commit/8db6d43))
+- **playground:** Demo Twitch emote images ([3364b88](https://github.com/ahmedrangel/streamer-emotes/commit/3364b88))
+
+### 💅 Refactors
+
+- **bttv:** Simplify emote image URL generation ([e6be82d](https://github.com/ahmedrangel/streamer-emotes/commit/e6be82d))
+
+### ❤️ Contributors
+
+- Ahmed Rangel ([@ahmedrangel](https://github.com/ahmedrangel))
+
 ## v0.1.3
 
 [compare changes](https://github.com/ahmedrangel/streamer-emotes/compare/v0.1.2...v0.1.3)
