@@ -2,6 +2,9 @@ import { $fetch } from "ofetch";
 import type { StreamerEmotesProps, StreamerEmotesProviderResponse } from "../types";
 import { getTwitchIdByLogin, providersURL } from "../utils/helpers";
 
+const getBTTVEmoticonsURL = (id: string, version: string) => `https://cdn.betterttv.net/emote/${id}/${version}`;
+const emoteVersions = ["1x", "2x", "3x"];
+
 /**
  *
  * @param twitchLogin Twitch channel login.
@@ -37,25 +40,13 @@ export const getBttvEmotes = async (channelLogin: string, options?: { globals?: 
   const normalizeData = (data: BttvEmotesResponse[]): StreamerEmotesProps<"bttv">[] => {
     if (!data?.length) return [];
 
-    const getBTTVEmoticonsURL = (id: string, version: string) => `https://cdn.betterttv.net/emote/${id}/${version}`;
-
     return data.map(emote => ({
       animated: emote.animated,
       id: emote.id,
-      images: [
-        {
-          url: getBTTVEmoticonsURL(emote.id, "1x"),
-          version: "1x"
-        },
-        {
-          url: getBTTVEmoticonsURL(emote.id, "2x"),
-          version: "2x"
-        },
-        {
-          url: getBTTVEmoticonsURL(emote.id, "3x"),
-          version: "3x"
-        }
-      ],
+      images: emoteVersions.map(version => ({
+        url: getBTTVEmoticonsURL(emote.id, version),
+        version
+      })),
       name: emote.code,
       provider: "bttv"
     }));
