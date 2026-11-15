@@ -43,14 +43,14 @@
 		"ofetch": "^2.0.0-alpha.3"
 	},
 	"devDependencies": {
-		"@stylistic/eslint-plugin": "^5.10.0",
-		"@types/node": "^26.6.2",
+		"@stylistic/eslint-plugin": "^6.0.0",
+		"@types/node": "^26.6.6",
 		"changelogen": "^0.6.2",
-		"eslint": "^10.11.0",
-		"eslint-plugin-import-x": "^4.17.1",
-		"obuild": "^0.4.40",
+		"eslint": "^10.15.0",
+		"eslint-plugin-import-x": "^4.18.1",
+		"obuild": "^0.4.45",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.70.1"
+		"typescript-eslint": "^8.72.2"
 	},
-	"packageManager": "pnpm@12.6.0"
+	"packageManager": "pnpm@12.21.0"
 }
