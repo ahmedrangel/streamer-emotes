@@ -2,6 +2,9 @@ import { type GqlPayloadOptions } from "gql-payload";
 import type { StreamerEmotesProps, StreamerEmotesProviderResponse } from "../types";
 import { callTwitchGQL, getTwitchIdByLogin } from "../utils/helpers";
 
+const getTwitchEmoticonsURL = (id: string, version: string) => `https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/dark/${version}`;
+const emoteVersions = ["1.0", "2.0", "3.0"];
+
 /**
  *
  * @param twitchLogin Twitch channel login.
@@ -58,25 +61,10 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
   const normalizeData = (data: TwitchGqlResponseEmotes[]): StreamerEmotesProps<"twitch">[] => {
     if (!data?.length) return [];
 
-    const getTwitchEmoticonsURL = (id: string, version: string) => `https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/dark/${version}`;
-
     return data.map(emote => ({
       animated: emote.assetType === "ANIMATED",
       id: emote.id,
-      images: [
-        {
-          url: getTwitchEmoticonsURL(emote.id, "1.0"),
-          version: "1.0"
-        },
-        {
-          url: getTwitchEmoticonsURL(emote.id, "2.0"),
-          version: "2.0"
-        },
-        {
-          url: getTwitchEmoticonsURL(emote.id, "3.0"),
-          version: "3.0"
-        }
-      ],
+      images: getTwitchEmoteImagesById(emote.id),
       name: emote.token,
       provider: "twitch"
     }));
@@ -89,6 +77,13 @@ export const getTwitchEmotes = async (channelLogin: string, options?: { globals?
     ],
     ...globals && { global: normalizeData(data?.emoteSet?.emotes) }
   };
+};
+
+export const getTwitchEmoteImagesById = (id: string) => {
+  return emoteVersions.map(version => ({
+    url: getTwitchEmoticonsURL(id, version),
+    version
+  }));
 };
 
 interface TwitchGqlResponseEmotes {

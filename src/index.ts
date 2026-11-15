@@ -1,7 +1,7 @@
 import { get7tvEmotes } from "./providers/7tv";
 import { getBttvEmotes } from "./providers/bttv";
 import { getFfzEmotes } from "./providers/ffz";
-import { getTwitchEmotes } from "./providers/twitch";
+import { getTwitchEmoteImagesById, getTwitchEmotes } from "./providers/twitch";
 import type { StreamerEmotesProviderResponse } from "./types";
 import { getTwitchIdByLogin } from "./utils/helpers";
 
@@ -68,7 +68,7 @@ const getStreamerEmotes = async (channelLogin: string, options: {
   return data;
 };
 
-export { getStreamerEmotes, getBttvEmotes, getFfzEmotes, get7tvEmotes, getTwitchEmotes };
+export { getStreamerEmotes, getBttvEmotes, getFfzEmotes, get7tvEmotes, getTwitchEmotes, getTwitchEmoteImagesById };
 
 interface StreamerEmotesProviderOptions {
   globals: boolean;
